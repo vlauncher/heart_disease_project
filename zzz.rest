@@ -1,0 +1,17 @@
+# POST http://localhost:8000/auth/users/
+# Content-Type: application/json
+
+# {
+#     "first_name" : "Samuel",
+#     "last_name" : "Jones",
+#     "email" : "v3dent@gmail.com",
+#     "password" : "Chelsea24462!"
+# }
+
+# POST http://localhost:8000/auth/jwt/create/
+# Content-Type: application/json
+
+# {
+#     "email" : "v3dent@gmail.com",
+#     "password" : "Chelsea24462!"
+# }

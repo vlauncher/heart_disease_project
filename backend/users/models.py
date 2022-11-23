@@ -50,6 +50,8 @@ class User(AbstractBaseUser):
     last_name = models.CharField('Last Name',max_length=100)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
+    is_patient = models.BooleanField(default=True)
+    is_doctor = models.BooleanField(default=False)
 
     objects = MyUserManager()
 

@@ -39,9 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'djoser',
-    'rest_framework.authtoken',
+    "corsheaders",
+    'whitenoise',
     #Custom apps
     'users.apps.UsersConfig',
+    'react_app.apps.ReactAppConfig',
 ]
 
 REST_FRAMEWORK = {
@@ -50,9 +52,12 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ),
 }
+from datetime import timedelta
 
 SIMPLE_JWT = {
-   'AUTH_HEADER_TYPES': ('JWT',),
+   'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+   'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+   'AUTH_HEADER_TYPES': ('Bearer',),
 }
 
 DJOSER = {
@@ -66,7 +71,9 @@ DJOSER = {
 }
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -80,7 +87,7 @@ ROOT_URLCONF = 'heart_disease_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / '../client/build'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -142,10 +149,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-
+STATICFILES_DIRS = [BASE_DIR/'../client/build/static']
+STATIC_ROOT = (BASE_DIR/'staticfiles')
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+SITE_ID = 1
