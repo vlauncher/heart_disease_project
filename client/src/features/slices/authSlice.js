@@ -14,7 +14,7 @@ const initialState = {
 /* Actions Start */
 export const userregister = createAsyncThunk('auth/register',async(userdata,thunkApi)=>{
     try {
-        const response = await axios.post('http://localhost:8000/auth/users/',userdata)
+        const response = await axios.post('auth/users/',userdata)
         if(response.data){
             localStorage.setItem('user',JSON.stringify(response.data))
         }
@@ -27,7 +27,7 @@ export const userregister = createAsyncThunk('auth/register',async(userdata,thun
 
 export const login = createAsyncThunk('auth/login',async(userdata,thunkApi)=>{
     try {
-        const response = await axios.post('http://localhost:8000/auth/jwt/create/',userdata)
+        const response = await axios.post('auth/jwt/create/',userdata)
         if(response.data){
             localStorage.setItem('user',JSON.stringify(response.data))
         }

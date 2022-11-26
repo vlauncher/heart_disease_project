@@ -147,7 +147,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
 
 CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOWED_ORIGINS = ['http://localhost:3000/','https://heartpredv1.onrender.com','http://localhost:8000/']
+CORS_ALLOWED_ORIGINS = ['http://localhost:3000']
 
 from datetime import timedelta
 
