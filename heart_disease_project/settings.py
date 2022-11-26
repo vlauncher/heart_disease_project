@@ -56,28 +56,11 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ),
 }
-from datetime import timedelta
-
-SIMPLE_JWT = {
-   'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
-   'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
-   'AUTH_HEADER_TYPES': ('Bearer',),
-}
-
-DJOSER = {
-    'LOGIN_FIELD' : 'email',
-    'SEND_ACTIVATION_EMAIL': False,
-    'SERIALIZERS': {
-        'user_create':'users.serializers.UserCreateSerializer',
-        'user':'users.serializers.UserCreateSerializer',
-        'user_delete':'djoser.serializers.UserDeleteSerializer',
-    },
-}
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -164,4 +147,22 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
 
 CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOWED_ORIGINS = ['http://localhost:3000','https://heartpredv1.onrender.com']
+CORS_ALLOWED_ORIGINS = ['http://localhost:3000/','https://heartpredv1.onrender.com','http://localhost:8000/']
+
+from datetime import timedelta
+
+SIMPLE_JWT = {
+   'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+   'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+   'AUTH_HEADER_TYPES': ('Bearer',),
+}
+
+DJOSER = {
+    'LOGIN_FIELD' : 'email',
+    'SEND_ACTIVATION_EMAIL': False,
+    'SERIALIZERS': {
+        'user_create':'users.serializers.UserCreateSerializer',
+        'user':'users.serializers.UserCreateSerializer',
+        'user_delete':'djoser.serializers.UserDeleteSerializer',
+    },
+}
