@@ -1,5 +1,6 @@
 import { createSlice,createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { toast } from 'react-toastify'
 
 // Get user from LocalStorage
 const user = JSON.parse(localStorage.getItem('user'))
@@ -17,6 +18,7 @@ export const userregister = createAsyncThunk('auth/register',async(userdata,thun
         const response = await axios.post('auth/users/',userdata)
         if(response.data){
             localStorage.setItem('user',JSON.stringify(response.data))
+            toast.success('Registeration Success');
         }
         return response.data
     } catch (error) {
@@ -30,6 +32,7 @@ export const login = createAsyncThunk('auth/login',async(userdata,thunkApi)=>{
         const response = await axios.post('auth/jwt/create/',userdata)
         if(response.data){
             localStorage.setItem('user',JSON.stringify(response.data))
+            toast.success('Login Success')
         }
         return response.data
     } catch (error) {
@@ -39,6 +42,7 @@ export const login = createAsyncThunk('auth/login',async(userdata,thunkApi)=>{
 })
 export const logout = createAsyncThunk('auth/logout',async ()=>{
     localStorage.removeItem('user');
+    toast.success('Logged Out')
 })
 
 /* Actions Ends */
