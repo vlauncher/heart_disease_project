@@ -99,9 +99,9 @@ DATABASES = {
     }
 }
 
-import dj_database_url
+# import dj_database_url
 
-DATABASES['default'] = dj_database_url.parse('postgresql://postgres:dcKxtmyuKWlcMFYf3F95@containers-us-west-172.railway.app:6982/railway') 
+# DATABASES['default'] = dj_database_url.parse('postgresql://postgres:dcKxtmyuKWlcMFYf3F95@containers-us-west-172.railway.app:6982/railway') 
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
