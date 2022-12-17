@@ -29,7 +29,7 @@ export const userregister = createAsyncThunk('auth/register',async(userdata,thun
 
 export const login = createAsyncThunk('auth/login',async(userdata,thunkApi)=>{
     try {
-        const response = await axios.post('auth/jwt/create/',userdata)
+        const response = await axios.post('auth/jwt/create/',userdata,{withCredentials:true})
         if(response.data){
             localStorage.setItem('user',JSON.stringify(response.data))
             toast.success('Login Success')
