@@ -99,9 +99,10 @@ DATABASES = {
     }
 }
 
-# import dj_database_url
+import dj_database_url
 
 # DATABASES['default'] = dj_database_url.parse('postgres://vlauncher:kGqgeINRrNDPvgjVrMoeOAosi7lM2EH3@dpg-ce58muta4991uert1vag-a.ohio-postgres.render.com/heartpred') 
+DATABASES['default'] = dj_database_url.parse('postgres://lmasiqpjpwdcvz:5ef12b54c09c91f3cbe58538a997ec5ce4d39e5dcee3e5677ac6f0735066d7ea@ec2-52-18-116-67.eu-west-1.compute.amazonaws.com:5432/daq69qt86ct7ga') 
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
